@@ -1,0 +1,25 @@
+{% extends "plantillaBase.html" %}
+
+{% block content %}
+<h1>PROYECTA TU PLAN HORIZONTE</h1>
+
+<p><b>¿Sos socio de la <i>Cooperativa Horizonte Ltda.?</i></b><br>
+Esta página te ofrece una simple calculadora que te permitirá:<br>
+* proyectar el avance en tu <i>PLAN HORIZONTE</i><br>
+* tener una estimación del tiempo necesario para adjudicar.
+</p>
+<br>
+<p><b>¿Cómo funciona?</b><br>
+Solo necesitas ingresar unos pocos datos (<b><i>no se te pedirán datos personales</i></b>).<br>
+<br>
+PASO 1: con solo 3 datos definirás el plan al que actualmente aportás<br>
+PASO 2: simularás las elecciones que harías al momento de presentarte a una adjudicación<br>
+PASO 3: LISTO! Tendrás los resultados y podrás interactuar con ellos...<br>
+</p>
+<br>
+
+<div class="boton">
+<a href="{% url 'plan-actual' %}">EMPEZAR!!!</a>
+</div>
+
+{% endblock %}

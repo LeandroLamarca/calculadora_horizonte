@@ -1,0 +1,59 @@
+{% extends "plantillaBase.html" %}
+
+{% block content %}
+<h1>SISTEMA DE PUNTAJE</h1>
+
+<p><b>Aclaraciones previas</b><br>
+* A continuación se describirá, de manera breve, el sistema de puntaje propuesto por la Cooperativa Horizonte Ltda. ("Cooperativa") para definir el orden de mérito resultante en cada acto de adjudicación.<br>
+* Se trata de un resumen solo con fines didácticos concentrado en la regla general (no se consideran aquí algunos casos especiales previstos por la <i>Cooperativa</i>).<br>
+* Recomendamos asistir a la <i>Cooperativa</i> para comprender acabadamente los detalles necesarios.<br>
+</p>
+<br>
+<p><b>Comentarios generales</b><br>
+* En cada acto de adjudicación, la cantidad de lotes disponibles se adjudican a partir de un orden de mérito en función del puntaje obtenido por cada postulante.<br>
+* Cada postulante a un acto de adjudicación obtiene puntos por:<br>
+    - su antigüedad;<br>
+    - porcentaje cancelado de la vivienda que eligió adjudicar;<br>
+    - oferta de devolución mensual (ODM): compromiso de aporte mensual a realizar en caso de lograr la adjudicación;<br>
+    - aportes extras en efectivo;<br>
+    - aportes en materiales y/o mano de obra (<i>estos aportes no están considerados en la simulación ofrecida en esta página</i>).
+</p>
+<br>
+<fieldset>
+  <legend><b>Sistema de puntos</b></legend>
+  <p>
+  <ins>Puntos por antigüedad</ins><br>
+Estrictamente, el postulante obtiene:<br>
+- <b>medio punto por cada mes en el que puntualmente se hayan cancelado, al menos, los aportes y cargos administrativos</b> definidos para el funcionamiento de la <i>Cooperativa</i>.<br>
+- <b>un punto por cada Certificado de Cancelación Porcentual obtenido</b> (un punto por recibo).<br>
+- el puntaje por antigüedad será <b>computable hasta un máximo de 70 puntos</b>.<br>
+  <br>
+  <ins>Puntos por porcentaje cancelado</ins><br>
+- El postulante obtiene <b>2 puntos por cada 1% cancelado respecto del valor de la vivienda finalmente elegida</b>.<br>
+- Se computarán todos los aportes efectuados desde el ingreso al plan, hasta el momento de la adjudicación.<br>
+  <br>
+  <ins>Puntos por ODM</ins><br>
+- El postulante obtiene <b>un punto por cada 1% ofrecido de cancelar en los 30 meses siguientes a la adjudicación</b>.<br>
+- La ODM se establece como un porcentaje del valor actualizado de la vivienda finalmente elegida.<br> 
+- Regla general: la ODM mínima es del 0,84% y la máxima es de 1%.<br>
+  <small><i>Se contemplan otros valores de manera excepcional y con la debida justificación. Estos casos no son contemplados en esta página.</i></small><br>
+- El puntaje por ODM será computable hasta completar el 100% del valor de la vivienda elegida. Ejemplo:<br>
+  <small>Si un postulante canceló hasta el momento de la adjudicación el 75% del valor de la vivienda elegida, y propone una ODM del 1%, el puntaje obtenido no será 30 ptos. (1 punto por cada 1% por 30 meses) sino 25 puntos (correspondiente al 25% computable para completar el 100% de cancelación total).<br>
+Si el postulante canceló solo el 60% y propone una ODM del 1%, sí obtendrá los 30 puntos correspondientes (ya que sí podrá computarse la totalidad del 30% resultante de 1% por 30 meses a partir de que no superará el 100% computable: 60% + 30% [= 1% * 30] &lt;= 100%).
+  </small><br>
+  <br>
+  <ins>Puntos por aportes extras en efectivo</ins><br>
+- El postulante puede ofrecer aportes en efectivo extras al porcentaje ya cancelado que deberán cumplimentarse en su totalidad en caso de resultar adjudicado.<br>
+- En caso de no resultar adjudicatario, estas ofertas deberán cumplirse en, al menos, un 50%.<br>
+- El postulate puede ofrecer aportes a cumplimentarse: al momento de la adjudicación, a los 30 días, 60 días, 90, 120, 150 y hasta 180 días.<br>
+- El puntaje correspondiente por cada 1% ofrecido, decrece progresivamente en 0,02 puntos en función del momento comprometido para cumplimentar el aporte:<br>
+     <b>2 puntos por cada 1%</b> comprometido a cancelar <b>al momento de la adjudicación</b>.<br>
+     <b>1,98 puntos por cada 1%</b> comprometido a cancelar <b>a los 30 días</b> de la adjudicación.<br>
+     <b>1,96 puntos por cada 1%</b> comprometido a cancelar <b>a los 60 días</b> de la adjudicación.<br>
+     ...<br>
+     <b>1,90 puntos por cada 1%</b> comprometido a cancelar <b>a los 150 días</b> de la adjudicación.<br>
+     <b>1,88 puntos por cada 1%</b> comprometido a cancelar <b>a los 180 días</b> de la adjudicación.<br>
+  </p>
+</fieldset>
+<br><br>
+{% endblock %}

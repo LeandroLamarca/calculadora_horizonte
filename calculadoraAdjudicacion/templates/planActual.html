@@ -1,0 +1,94 @@
+{% extends "plantillaBase.html" %}
+
+{% block content %}
+
+<h1>TU PLAN ACTUAL</h1>
+
+<p>Aquí deberás indicar los datos correspondientes a la vivienda por la cual estás aportando actualmente (te ayudaremos...)</p>
+
+
+<div class="formulario">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="campos_form">
+      <div>
+      <br>
+      <fieldset>
+        <br>
+        <div>
+          <label for="{{ form.vivenda.id_for_label }}">Vivienda actual:</label>
+          {{ form.vivienda }}
+        </div>
+        <div class="tooltip">
+          <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+          <span class="tooltiptext">Debes elegir el código de la vivienda <ins>a la que aportas actualmente.</ins><br><br>
+          Puedes consultarlo en tus recibos.
+          </span>
+        </div><br><br><br>
+        <div>
+          <label for="{{ form.antiguedad.id_for_label }}">Antiguedad (en meses):</label>
+          {{ form.antiguedad }}
+        </div>
+        <div class="tooltip">
+          <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+          <span class="tooltiptext">Cantidad de recibos/pagos efectuados desde el inicio.<br><br>
+          Si desconoces el dato, puedes indicar la cantidad de meses de antigüedad que tiene tu actual plan.<br><br>
+          En <i>Menú > SISTEMA DE PUNTAJE</i> puedes conocer mayores detalles. 
+          </span>
+        </div><br><br><br>
+        <div>
+          <label for="{{ form.cancelado.id_for_label }}">Cancelado (%):</label>
+          {{ form.cancelado }}
+        </div>
+        <div class="tooltip">
+          <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+          <span class="tooltiptext">Porcentaje acumulado cancelado de la vivienda <ins>a la que aportas actualmente.</ins><br><br>
+           Te recomendamos consultarlo en tu último recibo.
+          </span>
+        </div><br>
+        
+        {% if form.cancelado.errors %}
+            <div style="color:red">
+            {% for error in form.cancelado.errors %}
+                <p><i><small>{{ error|escape }}</small></i></p>
+                <p></p>
+            {% endfor %}
+            </div><br>
+        {% endif %}
+        <br>
+        <input type="submit" value="CONFIRMAR">
+      </fieldset>
+      </div>
+    </div>  
+  </form>
+</div>
+<div style="clear:left">
+<br>
+<button class="boton" id="miboton">AYUDA - Ver en recibo</button>
+</div>
+
+<!-- A continuación, la implementación de imagen modal/recibo. Adaptado de (ver fuente en style1.css)-->
+<div id="myModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="img01">
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+var button = document.getElementById("miboton");
+var modalImg = document.getElementById("img01");
+
+button.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = "/static/calculadoraAdjudicacion/images/recibo.PNG";
+}
+
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "plantillaBase.html" %}
+
+{% block content %}
+
+<h1>TU PLAN A ADJUDICAR</h1>
+
+<p>Aquí deberás definir la vivienda a adjudicar, algunos otros datos (te ayudaremos...)</p>
+
+<div class="formulario">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="campos_form">
+    <br>
+    <fieldset>  
+      <br>
+      <label for="{{ form.vivienda_adjudicar.id_for_label }}">Vivienda elegida:</label>
+      {{ form.vivienda_adjudicar }}<br><br>
+      <div>
+      <label for="{{ form.odm.id_for_label }}">ODM (%):</label>
+      {{ form.odm }}
+      </div>
+      <div class="tooltip">
+      <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+      <span class="tooltiptext"><b>Oferta de Devolución Mensual</b><br><br>
+      Aporte mensual que te comprometes a cancelar desde que adjudiques.<br><br>
+      En concreto, debes indicarlo como un porcentaje del valor de la vivienda que elegis adjudicar.<br><br>
+      Por regla general, debe ser al menos de 0,84% y, como máximo, de 1%.<br><br>
+      En <i>Menú > SISTEMA DE PUNTAJE</i> puedes conocer mayores detalles. 
+      </span>
+      </div><br>
+      
+      
+      {% if form.odm.errors %}
+            <div style="color:red">
+            {% for error in form.odm.errors %}
+                <p><i><small>{{ error|escape }}</small></i></p>
+                <p></p>
+            {% endfor %}
+            </div><br><br>
+        {% endif %}
+      
+      
+      <br><br>
+      <div>
+      <fieldset class="sub_set2">
+        <legend>Aportes en efectivo:</legend>
+        <label for="{{ form.oferta_efectivo.id_for_label }}">Al momento de la adjudicación:</label>
+        {{ form.oferta_efectivo }}<br><br>
+        <label for="{{ form.oferta_treinta.id_for_label }}">A los 30 días de la adjudicación:</label>
+        {{ form.oferta_treinta }}<br><br>
+        <label for="{{ form.oferta_sesenta.id_for_label }}">A los 60 días de la adjudicación:</label>
+        {{ form.oferta_sesenta }}<br><br>
+        <label for="{{ form.oferta_noventa.id_for_label }}">A los 90 días de la adjudicación:</label>
+        {{ form.oferta_noventa }}<br><br>
+        <label for="{{ form.oferta_c_veinte.id_for_label }}">A los 120 días de la adjudicación:</label>
+        {{ form.oferta_c_veinte }}<br><br>
+        <label for="{{ form.oferta_c_cincuenta.id_for_label }}">A los 150 días de la adjudicación:</label>
+        {{ form.oferta_c_cincuenta }}<br><br>
+        <label for="{{ form.oferta_c_ochenta.id_for_label }}">A los 180 días de la adjudicación:</label>
+        {{ form.oferta_c_ochenta }}<br>
+      </fieldset>
+      </div>
+      <div class="tooltip">
+        <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+        <span class="tooltiptext">Aquí indicarás si planeas realizar aportes extras en el caso que adjudiques.<br><br>
+        En <i>Menú > SISTEMA DE PUNTAJE</i> puedes conocer mayores detalles. 
+        </span>
+      </div><br><br><br><br>
+      <input type="submit" value="CONFIRMAR">
+    </fieldset>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

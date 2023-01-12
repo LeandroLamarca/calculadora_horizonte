@@ -1,0 +1,76 @@
+{% extends "plantillaBase.html" %}
+
+{% block content %}
+
+<h1>TUS RESULTADOS</h1>
+
+<br>
+<fieldset>
+  <fieldset class="sub_set">
+    <p><ins> Tu vivienda actual</ins>:
+      {{ viviendaactualtipologia }}
+      {{ viviendaactualambientes }}
+      ({{ planactual.vivienda.cod_hzte }})
+    </p>
+    <br>
+    <p><ins>Tu vivienda a adjudicar</ins>:
+      {{ viviendaadjudicartipologia }}
+      {{ viviendaadjudicarambientes }}
+      ({{ planadjudicar.vivienda_adjudicar.cod_hzte }})
+    </p>
+    <p><small><i>Valor actualizado: {{ valor_vivienda_adjudicar }}</i></small></p>
+  </fieldset><br><br>
+  <fieldset class="sub_set">
+    <div>
+    <p><ins>Puntos acumulados</ins>: {{ puntos_totales }}<br>
+    <ins>Puntos faltantes</ins>: {{ puntos_pendientes }}</p>
+    </div>
+    <div class="tooltip">
+          <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+          <span class="tooltiptext">Puntos necesarios para llegar al puntaje que alcanzaron en promedio adjudicatarios anteriores para la vivienda que has elegido.</span>
+    </div><br>
+    <p><br><br>
+    <ins>Con un aporte de</ins>: {{ aportemensualactual }}<br>
+    <i><small>Aporte mensual (previo a la adjudicación)</small></i>
+    </p><br>
+    <p><ins>Adjudicarías en</ins>: {{ meses }} meses</p><br>
+    <p><ins>Cuota post-adjudicación</ins>: {{ cuota_post_adjudicacion }}</p>
+  </fieldset><br><br>
+  <div class="boton">
+    <a href="{% url 'proyeccion' planactual.id %}" title="Te permite modificar tus elecciones (vivienda a adjudicar, ODM o aportes extras)">
+      RE-DEFINIR EL PLAN A ADJUDICAR</a>
+  </div>
+</fieldset>
+<!-- <br><br> -->
+<div class="formulario">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="campos_form">
+      <fieldset>
+        <div>
+        <label for="{{ form.aporte_actual.id_for_label }}">Aporte pre-adjudicación:</label>
+        {{ form.aporte_actual }}
+        </div>
+        <div class="tooltip">
+          <img class="pregunta" src="/static/calculadoraAdjudicacion/images/pregunta.png">
+          <span class="tooltiptext">Te permite indicar el aporte mensual a realizar hasta que adjudiques y re-calcular los resultados.</span>
+        </div><br><br>
+        
+        {% if form.aporte_actual.errors %}
+            <div style="color:red">
+            {% for error in form.aporte_actual.errors %}
+                <p><i><small>{{ error|escape }}</small></i></p>
+                <p></p>
+            {% endfor %}
+            </div><br>
+        {% endif %}
+        
+        
+        <input class="boton" type="submit" value="CONFIRMAR">
+      </fieldset>
+    </div>
+  </form> 
+</div>
+
+<br>
+{% endblock %}

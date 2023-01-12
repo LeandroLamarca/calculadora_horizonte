@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8" name="author" content="Leandro Lamarca">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'calculadoraAdjudicacion/style1.css' %}">
+
+  <!-- Recurso utilizado para lograr un menú responsivo. 
+  Ver: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {% block title %}
+  <title>¿CUANDO ADJUDICO EN HORIZONTE?</title>
+  <link rel="icon" type="image/x-icon" href="/static/calculadoraAdjudicacion/images/favicon.bmp">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <a class="active" href="{% url 'index' %}"><b>INICIO</b></a>
+    <a href="{% url 'puntaje' %}">SISTEMA DE PUNTAJE</a>
+    <a class="right" href="#SOBREMI">SOBRE MI</a>
+    <a class="right" href="#ACERCA_DE">ACERCA DE</a>
+    <!-- Próximo elemento <a> es necesario para la implementación del menú responsivo
+    Ver fuente recomendada en el <head> -->
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()"> <i class="fa fa-bars"></i></a>
+  </div>
+
+  <!-- <script> Javascript necsario para la implementación del menú responsivo. Ver fuente citadada en <head> -->
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {x.className += " responsive";} else {
+      x.className = "topnav";
+      }
+    }
+    </script>
+
+  <div class="general_body">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <div class="footer">
+    <footer>
+      <p class="oculto">
+        <i>Esta página no corresponde a una publicación oficial de 
+        <a href="https://www.coophorizonte.com.ar/" target="_blank">Coop. Horizonte Ltda.</a>
+        Ver detalles en: <a href="#PROYECTO">PROYECTO</a>
+        </i>
+      </p>
+      <a href="https://github.com/LeandroLamarca/calculadora_horizonte" 
+         target="_blank" title="Visitar proyecto en GitHub"
+      >
+        <img
+          src="/static/calculadoraAdjudicacion/images/github.png"
+          alt="Proyecto en GitHub"
+        >
+      </a>
+    </footer>
+  </div>
+
+</body>
+
+</html>
